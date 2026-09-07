@@ -40,3 +40,6 @@ python evaluate.py
 - CliniFact label strings (`preprocess.py::preprocess_clinifact`) — the mapping is a guess.
 - HealthFC / PUBHEALTH column names — auto-detected, but check the printed column list on first run.
 - Filenames for each raw dataset must match exactly what's listed above, or edit `preprocess.py`.
+<img width="1711" height="1884" alt="image" src="https://github.com/user-attachments/assets/d0c6debf-e922-48be-8495-a8d5c8e02aa2" />
+<img width="1695" height="1869" alt="image" src="https://github.com/user-attachments/assets/40cfbf82-0e97-4dcc-aaea-5d3c01ad0183" />
+
