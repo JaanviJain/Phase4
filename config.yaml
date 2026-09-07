@@ -1,0 +1,42 @@
+model:
+  biobert: "dmis-lab/biobert-base-cased-v1.1"
+  vit: "google/vit-base-patch16-224"
+  phase1_fusion_path: "checkpoints/phase1/best_fusion_20260814_111849.pt"
+  fusion_type: "concat"
+  
+  # PARTIAL UNFREEZING
+  freeze_biobert: false
+  biobert_unfreeze_top_n: 4
+  
+  freeze_vit: true
+  freeze_fusion: false
+  unfreeze_fusion_lr: 1e-5
+
+data:
+  raw_dir: "data/raw"
+  processed_dir: "data/processed"
+  max_claim_length: 128
+  max_evidence_length: 1024
+
+training:
+  epochs: 20
+  batch_size: 8
+  lr_classifier: 2e-4
+  lr_fusion: 1e-5
+  lr_biobert_top: 5e-6
+  weight_decay: 0.01
+  warmup_ratio: 0.1
+  use_amp: true
+  grad_clip: 1.0
+  early_stopping_patience: 5
+  seed: 42
+
+output:
+  checkpoint_dir: "checkpoints/phase4"
+  log_dir: "logs"
+
+phase3:
+  phase2_evidence_path: "data/pipeline/retrieved_evidence.json"
+  weighted_evidence_path: "data/pipeline/evidence_weighted.json"
+  unweighted_evidence_path: "data/pipeline/evidence_unweighted.json"
+  top_k_evidence: 3
